@@ -5,25 +5,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
+    <script src="./src/userStatistics.js" defer></script>
     <script src="./src/createStatisticsItem.js" defer></script>
     <script src="./index.js" defer></script>
     <title>Monty Hall</title>
   </head>
   <body>
     <h1>Monty Hall Probability</h1>
-    <div>
-      <form>
-        <label for="count">Enter count</label>
-        <input type="text" name="count" id="count" />
-        <label for="doors">Enter doors</label>
-        <input type="text" name="doors" id="doors" />
-        <button type="submit">Get Probability</button>
-      </form>
+    <div class="custom-statistics">
+      <div class="form-container">
+        <form id="user-statistics">
+          <label for="count-data">Enter count</label>
+          <input type="text" name="count" id="count-data" />
+          <label for="doors-data">Enter doors</label>
+          <input type="text" name="doors" id="doors-data" />
+          <label><input type="checkbox" name="stick-data" />stick</label>
+          <label><input type="checkbox" name="switch-data" />switch</label>
+          <button type="submit">Get Probability</button>
+        </form>
+      </div>
+      <div class="user-statistics-outputs">
+        <div
+          class="user-statistics--graph"
+          data-count=""
+          data-doors=""
+          id=""
+        ></div>
+        <div class="user-statistics-result"></div>
+      </div>
     </div>
     <div class="statistics">
       <h2>Statistics switching door the best option</h2>
-      <ul class="statistics-items">
-      </ul>
+      <ul class="statistics-items"></ul>
     </div>
   </body>
 </html>
