@@ -1,17 +1,48 @@
+:root{
+    --stick: #fdcece;
+    --switch: #afd0fd;
+}
+
 * {
   box-sizing: border-box;
 }
+/*user Statistics*/
+.custom-statistics {
+  display: flex;
+}
+.form-container {
+  width: 40%;
+  max-width: 10rem;
+}
+#user-statistics {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.user-statistics--graph {
+  display: flex;
+  flex-wrap: wrap;
+  width: 12rem;
+  justify-content: center;
+  gap: 1rem;
+}
+.user-statistics--graph > button,
+.statistics-item > button{
+    width: 80%;
+}
+
 .statistics-items {
   list-style: none;
   margin: 0;
+  padding: 2rem;
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .statistics-item {
   display: flex;
   flex-wrap: wrap;
-  width: 12rem;
   justify-content: center;
   gap: 1rem;
 }
@@ -19,9 +50,7 @@
 .stick,
 .switch {
   height: 12rem;
-  width: 3rem;
-  border: 2px solid black;
-
+  width: 3.8rem;
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -33,10 +62,23 @@
 .result {
   height: 1rem;
   font-size: 1rem;
+  position: absolute;
+  font-weight: 800;
 }
 .stick .bar {
-  background-color: green;
+  background-color: var(--stick);
 }
 .switch .bar {
-  background-color: rgb(27, 27, 215);
+  background-color: var(--switch);
+}
+.error {
+  position: relative;
+}
+.error::after {
+  content: 'Please add valid number xx';
+  position: absolute;
+  font-size: 0.7rem;
+  color: red;
+  top: 3rem;
+  left: 0;
 }
