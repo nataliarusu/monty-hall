@@ -1,0 +1,22 @@
+.probabilities-general,
+.probabilities-stick {
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid black;
+  width: 300px;
+}
+
+.probabilities-general > *,
+.probabilities-stick > * {
+  margin: 1rem;
+}
+.probabilities-general > * > span,
+.probabilities-stick > * > span {
+  margin: 1rem;
+}
+.stick {
+  color: red;
+}
+.opened {
+  color: green;
+}
