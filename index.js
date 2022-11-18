@@ -26,9 +26,6 @@ const getStatistics = (count, doors) => {
     }
     count--;
   }
-  statistics.push(result);
-  renderResult(result);
-  console.log(statistics)
   return result;
 };
 
@@ -36,6 +33,23 @@ const renderResult=(result)=>{
     const li = createStatisticsItem(result);
     statisticsListEl.append(li)
 }
-getStatistics(10, 3);
-getStatistics(100, 3);
-getStatistics(1000, 3);
+const startStatistics=()=>{
+    let result=getStatistics(3, 3);
+    statistics.push(result);
+    renderResult(result);
+    result=getStatistics(10, 3);
+    statistics.push(result);
+    renderResult(result);
+    result=getStatistics(100, 3);
+    statistics.push(result);
+    renderResult(result);
+    result = getStatistics(1000, 3);
+    statistics.push(result);
+    renderResult(result);
+    result = getStatistics(10000, 3);
+    statistics.push(result);
+    renderResult(result);
+    console.log(statistics)
+}
+startStatistics();
+
