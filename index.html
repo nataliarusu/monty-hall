@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./src/createStatisticsItem.js" defer></script>
     <script src="./index.js" defer></script>
     <title>Monty Hall</title>
-</head>
-<body>
-    <div class="probabilities-general">
-        <div ><span class="stick">Car</span><span>Goat</span><span>Goat</span></div>
-        <div><span class="stick">Goat</span><span>Car</span><span>Goat</span></div>
-        <div><span class="stick">Goat</span><span>Goat</span><span>Car</span></div>
+  </head>
+  <body>
+    <h1>Monty Hall Probability</h1>
+    <div>
+      <form>
+        <label for="count">Enter count</label>
+        <input type="text" name="count" id="count" />
+        <label for="doors">Enter doors</label>
+        <input type="text" name="doors" id="doors" />
+        <button type="submit">Get Probability</button>
+      </form>
     </div>
-    <div class="probabilities-stick">
-        <div ><span class="stick">Car</span><span class="opened">Goat</span><span>Goat</span></div>
-        <div><span class="stick">Goat</span><span>Car</span><span class="opened">Goat</span></div>
-        <div><span class="stick">Goat</span><span class="opened">Goat</span><span>Car</span></div>
+    <div class="statistics">
+      <h2>Statistics switching door the best option</h2>
+      <ul class="statistics-items">
+      </ul>
     </div>
-    
-</body>
+  </body>
 </html>

@@ -1,22 +1,42 @@
-.probabilities-general,
-.probabilities-stick {
-  margin: 1rem;
-  padding: 1rem;
-  border: 1px solid black;
-  width: 300px;
+* {
+  box-sizing: border-box;
+}
+.statistics-items {
+  list-style: none;
+  margin: 0;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.statistics-item {
+  display: flex;
+  flex-wrap: wrap;
+  width: 12rem;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.probabilities-general > *,
-.probabilities-stick > * {
-  margin: 1rem;
+.stick,
+.switch {
+  height: 12rem;
+  width: 3rem;
+  border: 2px solid black;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  text-align: center;
 }
-.probabilities-general > * > span,
-.probabilities-stick > * > span {
-  margin: 1rem;
+.bar {
+  width: 100%;
 }
-.stick {
-  color: red;
+.result {
+  height: 1rem;
+  font-size: 1rem;
 }
-.opened {
-  color: green;
+.stick .bar {
+  background-color: green;
+}
+.switch .bar {
+  background-color: rgb(27, 27, 215);
 }
