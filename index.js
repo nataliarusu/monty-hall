@@ -5,7 +5,9 @@ const getRandom = (max) => {
   return Math.floor(Math.random() * max + 1);
 };
 /**
- * get result of rundom matched 
+ * get the result of iterations showing the possibility that the user choice matches the car door, 
+ * returns the result of a stick or switch, for Monty Hall (3 doors)  * 
+ * result depends on the number of iterations, the data is for statistic purpose only
  * @param {number} count number of iteration to get statistics
  * @param {number} doors number of doors 
  * @returns {object} {iterations:, doors:, stick:,switch:};
