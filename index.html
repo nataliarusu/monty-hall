@@ -5,38 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./src/userStatistics.js" defer></script>
-    <script src="./src/createStatisticsItem.js" defer></script>
+    <script src="./src/calculateProbability.js" defer></script>
+    <script src="./src/generateProbability.js" defer></script>
+    <script src="./src/createListItem.js" defer></script>
     <script src="./index.js" defer></script>
     <title>Monty Hall</title>
   </head>
   <body>
     <h1>Monty Hall Probability</h1>
-    <div class="custom-statistics">
+    <div>
+      The program calculates the probability of the winning strategy between
+      stick and switch. The minimum number of doors is 3. The difference between
+      the total number of doors and the number of doors the host can open should
+      be at least 2, to simulate probability between 2 doors. 
+The program assumes that 1 of the doors is the user's choice.
+<div>
+This table is an example of possible input values for the total number of doors and min/max values of the doors the host can open.
+      <table>
+        <tr>
+          <th>Total doors</th>
+          <th>Host can open</th>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>( 1 )</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>( 1 | 2 )</td>
+        </tr>
+
+        <tr>
+          <td>5</td>
+          <td>( 1 | 2 | 3 )</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>( 1 | 2 | 3 | 4 )</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>( 1 | 2 | 3 | 4 | 5 )</td>
+        </tr>
+      </table>
+    </div>
+    </div>
+    <div class="calc-probability">
+      <h2>Calculate probability</h2>
       <div class="form-container">
-        <form id="user-statistics">
-          <label for="count-data">Enter count</label>
-          <input type="text" name="count" id="count-data" />
-          <label for="doors-data">Enter doors</label>
-          <input type="text" name="doors" id="doors-data" />
-          <label><input type="checkbox" name="stick-data" />stick</label>
-          <label><input type="checkbox" name="switch-data" />switch</label>
+        <form id="probability-form">
+          <label for="doors">Total doors</label>
+          <input type="number" name="doors" id="doors" min="3" required/>
+          <label for="num-host-open-doors"
+            >Host open doors</label
+          >
+          <input
+            type="number"
+            name="num-host-open-doors"
+            id="num-host-open-doors"
+            min="1"
+            required
+          />       
           <button type="submit">Get Probability</button>
         </form>
       </div>
-      <div class="user-statistics-outputs">
+      <div class="probability-output">
+        <h3 class ="probability-output--title"></h3>
         <div
-          class="user-statistics--graph"
-          data-count=""
-          data-doors=""
-          id=""
+          class="probability-output--graph"
         ></div>
-        <div class="user-statistics-result"></div>
+        <div class="probability-output--result"></div>
       </div>
+    </div>
+    <div class="probabilities">
+      <h2>Probability switching door the best option</h2>
+      <ul class="probability-items" data-list="probability-items"></ul>
     </div>
     <div class="statistics">
       <h2>Statistics switching door the best option</h2>
-      <ul class="statistics-items"></ul>
+      <ul class="statistics-items" data-list="statistic-items"></ul>
     </div>
   </body>
 </html>
