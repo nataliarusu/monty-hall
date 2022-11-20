@@ -1,6 +1,7 @@
 //Note, host can open ( total doors - user open (1 door)) - (at least 1 door remains closed) )
 
 const calculatePobability = (doors = 3, hostOpen = 1) => {
+  if(doors-hostOpen <2) return;
   // hostOpen = how many doors we want host to open, this should be at least 2 doors less than number of doors
 
   //assuming we have 5 doors, userPickes 1 door, hostOpens = 2 doors 
@@ -27,7 +28,7 @@ const calculatePobability = (doors = 3, hostOpen = 1) => {
   const switchProbability =
     globalProbabilityCarBehindHost * unopenedEachDoorProbability;
 
-  return { sticked: probabilityPickedDoorsHasCar, switched: switchProbability };
+  return { totalDoors: doors, opened: hostOpen, sticked: probabilityPickedDoorsHasCar, switched: switchProbability };
 };
 
 
