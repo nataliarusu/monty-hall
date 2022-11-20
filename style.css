@@ -6,32 +6,54 @@
 * {
   box-sizing: border-box;
 }
-/*user Statistics*/
-.custom-statistics {
+h1, h2{
+    text-align: center;
+}
+/*user Probability*/
+.calc-probability {
   display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-around;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.calc-probability h2{
+  align-self: center;
+    width: 100%;
+
 }
 .form-container {
   width: 40%;
   max-width: 10rem;
 }
-#user-statistics {
+#probability-form {
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.user-statistics--graph {
+.probability-output{
+  display: grid;
+
+}
+
+.probability-output--graph {
   display: flex;
   flex-wrap: wrap;
   width: 12rem;
   justify-content: center;
   gap: 1rem;
 }
-.user-statistics--graph > button,
+
+
+
+
 .statistics-item > button{
-    width: 80%;
+  width: 80%;
 }
 
+.probability-items,
 .statistics-items {
   list-style: none;
   margin: 0;
@@ -40,6 +62,7 @@
   grid-gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
+.probability-item,
 .statistics-item {
   display: flex;
   flex-wrap: wrap;
@@ -71,14 +94,45 @@
 .switch .bar {
   background-color: var(--switch);
 }
-.error {
+
+/*ERROR*/
+.error-doors {
   position: relative;
 }
-.error::after {
-  content: 'Please add valid number xx';
+.error-doors::after {
+  content: 'Total doors should be greater than host doors at least by 2'; 
   position: absolute;
   font-size: 0.7rem;
   color: red;
   top: 3rem;
   left: 0;
 }
+
+
+.btn-recalculate {
+    align-items: center;
+    background-image: linear-gradient(360deg, #4085e4, #315b9f 50%, #3769b1 100%);
+    border: 0;
+    border-radius: 2px;
+    box-shadow: rgb(151 65 252 / 20%) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+    cursor: pointer;
+  }
+  
+  .btn-recalculate:active,
+  .btn-recalculate:hover {
+    outline: 0;
+  }
+
+  /*probability*/
