@@ -32,6 +32,23 @@ export const createBar = (option, percent) => {
   return optionEl;
 };
 
+/**
+ * 
+ * @param {number} stickPercent stick number converted to %
+ * @param {number} switchPercent switch number converted to %
+ * @returns {HTMLDivElement} div contains bars with % data
+ */
+
+export const createBars = (stickPercent, switchPercent)=>{
+  const barsEl = document.createElement('div');
+  barsEl.classList.add('bars');
+  const stickEl = createBar('stick', stickPercent);
+  const switchEl = createBar('switch', switchPercent);
+  barsEl.append(stickEl, switchEl);
+  return barsEl;
+}
+
+
 const infoContainer = () => {
   const infoContainerEl = document.createElement('div');
   infoContainerEl.classList.add('info');
@@ -63,13 +80,12 @@ const generateStatisticMessage = (result) => {
  * @returns {HTMLDivElement} div HTML element with probability object's values
  */
 export const generatePobabilityMessage = (result) => {
-  console.log(result)
   const infoContainerEl = infoContainer();
   const [stickedEl, switchedEl] = createElements('p', 2);
   stickedEl.classList.add('stick-result-output');
   switchedEl.classList.add('switch-result');
-  stickedEl.innerHTML = `Stick probability: ${result.sticked.toFixed(4)}`;
-  switchedEl.innerHTML = `Switch probability: ${result.switched.toFixed(4)}`;
+  stickedEl.innerHTML = `Stick probability: ${result.stick.toFixed(4)}`;
+  switchedEl.innerHTML = `Switch probability: ${result.switch.toFixed(4)}`;
   infoContainerEl.append(stickedEl, switchedEl);
 
   return infoContainerEl;
@@ -78,7 +94,7 @@ export const generatePobabilityMessage = (result) => {
 /**
  * 
  * @param {*object} result {iterations:, doors:, sticked:, switched:}
- * @returns {HTMLLIElement}
+ * @returns {HTMLLIElement} li element with result data
  */
 export const createStatisticsItem = (result) => {
   const li = document.createElement('li');
@@ -87,14 +103,12 @@ export const createStatisticsItem = (result) => {
   li.setAttribute('data-doors', result.doors);
   const stickPercent = (result.stick * 100) / result.iterations;
   const switchPercent = (result.switch * 100) / result.iterations;
-  console.log(result.stick, switchPercent)
   const messageEl = generateStatisticMessage(result);
-  const stickEl = createBar('stick', stickPercent);
-  const switchEl = createBar('switch', switchPercent);
+  const barsEl = createBars(stickPercent, switchPercent); 
   const button = document.createElement('button');
   button.classList.add('btn-recalculate');
   button.innerHTML = 'Recalculate';
-  li.append(stickEl, switchEl, button, messageEl);
+  li.append(barsEl, button, messageEl);
 
   return li;
 };
@@ -102,21 +116,18 @@ export const createStatisticsItem = (result) => {
 /**
  * 
  * @param {*object} probability {totalDoors:, opened:, sticked:, switched:} 
- * @returns {HTMLLIElement}
+ * @returns {HTMLLIElement}  li element with probability data
  */
-export const createProbabilityItem = (probability) => {
+export const createProbabilityItem = (probability) => { 
   const li = document.createElement('li');
   li.classList.add('probability-item');
-  li.setAttribute('data-stick-probability', probability.sticked);
-  li.setAttribute('data-switch-probability', probability.switched);
+  li.setAttribute('data-stick-probability', probability.stick);
+  li.setAttribute('data-switch-probability', probability.switch);
   const titleEl = document.createElement('h3');
-  titleEl.innerHTML = `Probability of total ${probability.totalDoors} doors and ${probability.opened} open doors`;
-  const stickPercent = probability.sticked * 100;
-  const switchPercent = probability.switched * 100;
+  titleEl.innerHTML = `Probability: total ${probability.totalDoors} doors and ${probability.opened} open doors.`;
+  const barsEl = createBars(probability.stick * 100, probability.switch * 100);
   const messageEl = generatePobabilityMessage(probability);
-  const stickEl = createBar('stick', stickPercent);
-  const switchEl = createBar('switch', switchPercent);
-  li.append(stickEl, switchEl, titleEl, messageEl);
+  li.append(barsEl, titleEl, messageEl);
 
   return li;
 };

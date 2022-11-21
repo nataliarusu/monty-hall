@@ -1,5 +1,5 @@
 import { calculatePobability } from "./calculateProbability.js";
-import { createBar, generatePobabilityMessage } from "./createListItem.js";
+import { createBars, generatePobabilityMessage } from "./createListItem.js";
 import {closeHelpInfoHandler} from './help.js';
 const doorslabel = document.querySelector('label[for="doors"]');
 const doorsInput = document.querySelector('#doors');
@@ -21,14 +21,16 @@ const resetFormResult = () => {
   probabilityGraph.innerHTML = '';
   resultInfoOutputEl.innerHTML = '';
 };
-const renderProbability = (result, doors, openDoors) => {
+/**
+ * 
+ * @param {object} result {totalDoors:, opened:, sticked:, switched:}
+ * renders result on the page and closes the help info block
+ */
+const renderProbability = (result) => {
   resetFormResult();
-  const stickPercent = result.sticked;
-  const switchPercent = result.switched;
-  const stickEl = createBar('stick', stickPercent * 100);
-  const switchEl = createBar('switch', switchPercent * 100);
-  probabilityGraph.append(stickEl, switchEl);
-  probabilityRtitle.innerHTML = `Stick and Switch probabilities for ${doors} doors when host opens ${openDoors} doors`;
+  const barsEl = createBars(result.stick * 100, result.switch * 100);
+  probabilityGraph.append(barsEl);
+  probabilityRtitle.innerHTML = `Stick and Switch probabilities for ${result.totalDoors} doors when host opens ${result.opened} doors`;
   const resultInfoEl = generatePobabilityMessage(result);
   resultInfoOutputEl.append(resultInfoEl);
   closeHelpInfoHandler();
@@ -41,11 +43,7 @@ export const generateProbabilityHandler = (e) => {
       Number(doorsInput.value),
       Number(openDoorsInput.value)
     );
-    renderProbability(
-      result,
-      Number(doorsInput.value),
-      Number(openDoorsInput.value)
-    );
+    renderProbability(result);
   }
 };
 
