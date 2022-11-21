@@ -1,15 +1,54 @@
-:root{
-    --stick: #fdcece;
-    --switch: #afd0fd;
+:root {
+  --stick: #fdcece;
+  --switch: #afd0fd;
 }
 
 * {
   box-sizing: border-box;
 }
-h1, h2{
-    text-align: center;
+h1,
+h2 {
+  text-align: center;
 }
-/*user Probability*/
+.get-help {
+  border: 2px solid black;
+  color: #a6a21e;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 900;
+  cursor: pointer;
+  margin: 0 2rem;
+}
+.visible {
+  display: block !important;
+}
+.help-info {
+  max-width: 50%;
+  border: 1px solid black;
+  padding: 1rem;
+  box-shadow: 2px 2px 22px grey;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 100;
+  background: white;
+  top: 4rem;
+  right: 0;
+  display: none;
+}
+.close-help-info-btn {
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+.probabilities,
+.statistics {
+  margin-top: 2rem;
+}
+
 .calc-probability {
   display: flex;
   flex-wrap: wrap;
@@ -17,25 +56,34 @@ h1, h2{
   justify-content: space-around;
   max-width: 700px;
   margin: 0 auto;
+  position: relative;
 }
-.calc-probability h2{
-  align-self: center;
-    width: 100%;
-
+.calc-probability .calc-title {
+  text-align: center;
+  width: 100%;
+}
+.calc-probability .calc-title > * {
+  display: inline-block;
 }
 .form-container {
-  width: 40%;
-  max-width: 10rem;
+  width: 50%;
+  max-width: 15rem;
 }
 #probability-form {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.8rem;
 }
-
-.probability-output{
-  display: grid;
-
+#probability-form button {
+  margin-top: 0.8rem;
+}
+.probability-output {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  max-width: 40%;
 }
 
 .probability-output--graph {
@@ -45,34 +93,47 @@ h1, h2{
   justify-content: center;
   gap: 1rem;
 }
+.probability-output--title {
+  margin: 0.2rem 0 0 0;
+  font-size: 1rem;
+}
 
-
-
-
-.statistics-item > button{
-  width: 80%;
+.statistics-item > button {
+padding: 0 1rem;
 }
 
 .probability-items,
 .statistics-items {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 2rem;
   display: grid;
   grid-gap: 2rem;
+}
+
+.probability-items,
+.statistics-items {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .probability-item,
 .statistics-item {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.probability-item h3{
+  margin: 0;
+}
+.bars {
+  display: flex;
+  align-items: end;
   gap: 1rem;
 }
 
 .stick,
 .switch {
-  height: 12rem;
+  height: 8rem;
   width: 3.8rem;
   display: flex;
   flex-direction: column;
@@ -94,45 +155,39 @@ h1, h2{
 .switch .bar {
   background-color: var(--switch);
 }
+.info > * {
+  margin: 0.05rem;
+}
 
 /*ERROR*/
 .error-doors {
   position: relative;
 }
 .error-doors::after {
-  content: 'Total doors should be greater than host doors at least by 2'; 
+  content: 'Total doors should be greater than host doors';
   position: absolute;
   font-size: 0.7rem;
   color: red;
-  top: 3rem;
+  top: 3.5rem;
   left: 0;
 }
 
+button {
+  background-image: linear-gradient(360deg, #4085e4 1%, #315b9f 10%, #3a74c8 100%);
+  border: 0;
+  border-radius: 2px;
+  box-shadow: rgb(151 65 252 / 20%) 0 15px 30px -5px;
+  color: #ffffff;
+  font-family: Phantomsans, sans-serif;
+  font-size: 1.2rem;
+  cursor: pointer;
+  height: 2rem;
+}
 
-.btn-recalculate {
-    align-items: center;
-    background-image: linear-gradient(360deg, #4085e4, #315b9f 50%, #3769b1 100%);
-    border: 0;
-    border-radius: 2px;
-    box-shadow: rgb(151 65 252 / 20%) 0 15px 30px -5px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    display: flex;
-    font-family: Phantomsans, sans-serif;
-    font-size: 20px;
-    justify-content: center;
-
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-
-    cursor: pointer;
-  }
-  
-  .btn-recalculate:active,
-  .btn-recalculate:hover {
-    outline: 0;
-  }
-
-  /*probability*/
+button:active{
+  color: #305da5;
+}
+button:hover {
+  outline: 0;
+  background: #305da5;
+}
