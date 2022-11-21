@@ -1,6 +1,6 @@
 import { calculatePobability } from './src/calculateProbability.js';
 import { calculateStatistics } from './src/calculateStatistics.js';
-import { createProbabilityItem, createStatisticsItem} from './src/createListItem.js';
+import { createProbabilityItem, createStatisticsItem } from './src/createListItem.js';
 import { generateProbabilityHandler, calculateInitialP} from './src/generateProbability.js';
 import { showHelpInfoHandler } from './src/help.js';
 import { recalculateHandler } from './src/calculateStatistics.js';
@@ -10,13 +10,20 @@ const probabilityList = document.querySelector('.probability-items');
 const form = document.querySelector('#probability-form');
 
 const renderProbabilities = () => {
-  const P = [[5, 1], [5, 2], [5, 3], [10]];
+  const P = [
+    [7, 1],
+    [7, 2],
+    [7, 3],
+    [7, 4],
+    [7, 5]
+  ];
 
   for (const pData of P) {
     const [doors, openDoors] = pData;
     let probability = calculatePobability(doors, openDoors);
     const li = createProbabilityItem(probability);
     probabilityList.append(li);
+    console.log(probability);
   }
 };
 const renderStatistics = () => {
@@ -33,9 +40,9 @@ const renderStatistics = () => {
     //iterations, value
     const [iterations, value] = ivData;
     let result = calculateStatistics(iterations, value);
-    console.log(result);
     const li = createStatisticsItem(result);
     statisticsList.append(li);
+    console.log(result);
   }
 };
 
