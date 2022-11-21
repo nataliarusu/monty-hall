@@ -4,7 +4,7 @@
  * @param {number} doors number of total doors for the game
  * @param {number} hostOpen number of how many doors host should open
  * @returns {object} probability object
- * { totalDoors: doors, opened: hostOpen, sticked: probabilityPickedDoorsHasCar, switched: switchProbability };
+ * { totalDoors: doors, opened: hostOpen, stick: probabilityPickedDoorsHasCar, switch: switchProbability };
  */
 
 export const calculatePobability = (doors = 3, hostOpen = 1) => {
@@ -20,6 +20,6 @@ export const calculatePobability = (doors = 3, hostOpen = 1) => {
   const switchProbability =
     globalProbabilityCarBehindHost * unopenedEachDoorProbability;
 
-  return { totalDoors: doors, opened: hostOpen, sticked: probabilityPickedDoorsHasCar, switched: switchProbability };
+  return { totalDoors: doors, opened: hostOpen, stick: probabilityPickedDoorsHasCar, switch: switchProbability };
 };
 
