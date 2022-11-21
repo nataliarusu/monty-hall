@@ -23,7 +23,6 @@ export const calculateStatistics = (count, doors) => {
     }
     iterate--;
   }
-  console.log(sticked, switched);
   return {
     iterations: count,
     doors: doors,
@@ -38,8 +37,6 @@ export const recalculateHandler = (e) => {
     const iterations = li.dataset.count;
     const doors = li.dataset.doors;
     const result = calculateStatistics(Number(iterations), Number(doors));
-    console.log((result.stick * 100) / result.iterations);
-
     li.querySelector('.stick .bar').style.setProperty(
       'height',
       `${(result.stick * 100) / result.iterations}%`
