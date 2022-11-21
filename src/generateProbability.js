@@ -1,4 +1,6 @@
-const form = document.querySelector('#probability-form');
+import { calculatePobability } from "./calculateProbability.js";
+import { createBar, generatePobabilityMessage } from "./createListItem.js";
+import {closeHelpInfoHandler} from './help.js';
 const doorslabel = document.querySelector('label[for="doors"]');
 const doorsInput = document.querySelector('#doors');
 const openDoorsInput = document.querySelector('#num-host-open-doors');
@@ -26,11 +28,12 @@ const renderProbability = (result, doors, openDoors) => {
   const stickEl = createBar('stick', stickPercent * 100);
   const switchEl = createBar('switch', switchPercent * 100);
   probabilityGraph.append(stickEl, switchEl);
-  probabilityRtitle.innerHTML = `Probability of total ${doors} doors and ${openDoors} open doors`;
+  probabilityRtitle.innerHTML = `Stick and Switch probabilities for ${doors} doors when host opens ${openDoors} doors`;
   const resultInfoEl = generatePobabilityMessage(result);
   resultInfoOutputEl.append(resultInfoEl);
+  closeHelpInfoHandler();
 };
-const calculateProbabilityHandler = (e) => {
+export const generateProbabilityHandler = (e) => {
   e.preventDefault();
   console.log('submitted');
   if (Number(doorsInput.value) - Number(openDoorsInput.value) >= 2) {
@@ -70,6 +73,13 @@ const validateOpenDoorsHanler = (e) => {
   }
 };
 
+export const calculateInitialP=()=>{
+  doorsInput.value=3;
+  openDoorsInput.value=1;
+  let result=calculatePobability(3, 1);
+  renderProbability(result, 3, 1);
+}
+
 openDoorsInput.addEventListener('input', validateOpenDoorsHanler);
 doorsInput.addEventListener('input', validateDoorsHandler);
-form.addEventListener('submit', calculateProbabilityHandler);
+

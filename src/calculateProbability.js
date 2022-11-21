@@ -1,6 +1,6 @@
 //Note, host can open ( total doors - user open (1 door)) - (at least 1 door remains closed) )
 
-const calculatePobability = (doors = 3, hostOpen = 1) => {
+export const calculatePobability = (doors = 3, hostOpen = 1) => {
   if(doors-hostOpen <2) return;
   // hostOpen = how many doors we want host to open, this should be at least 2 doors less than number of doors
 

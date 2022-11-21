@@ -19,7 +19,7 @@ const createElements = (tag, num) => {
  * @param {*number} percent probability | statistics option matched
  * @returns {HTMLDivElement} div with option's values
  */
-const createBar = (option, percent) => {
+export const createBar = (option, percent) => {
   const optionEl = document.createElement('div');
   optionEl.classList.add(`${option}`);
   const [optionBar, optionResultEl] = createElements('span', 2);
@@ -62,13 +62,14 @@ const generateStatisticMessage = (result) => {
  * @param {*object} result {totalDoors:, opened:, sticked:, switched:}
  * @returns {HTMLDivElement} div HTML element with probability object's values
  */
-const generatePobabilityMessage = (result) => {
+export const generatePobabilityMessage = (result) => {
+  console.log(result)
   const infoContainerEl = infoContainer();
   const [stickedEl, switchedEl] = createElements('p', 2);
   stickedEl.classList.add('stick-result-output');
   switchedEl.classList.add('switch-result');
-  stickedEl.innerHTML = `Stick probability: ${result.sticked * 100}`;
-  switchedEl.innerHTML = `Switch probability: ${result.switched * 100}`;
+  stickedEl.innerHTML = `Stick probability: ${result.sticked.toFixed(4)}`;
+  switchedEl.innerHTML = `Switch probability: ${result.switched.toFixed(4)}`;
   infoContainerEl.append(stickedEl, switchedEl);
 
   return infoContainerEl;
@@ -79,7 +80,7 @@ const generatePobabilityMessage = (result) => {
  * @param {*object} result {iterations:, doors:, sticked:, switched:}
  * @returns {HTMLLIElement}
  */
-const createStatisticsItem = (result) => {
+export const createStatisticsItem = (result) => {
   const li = document.createElement('li');
   li.classList.add('statistics-item');
   li.setAttribute('data-count', result.iterations);
@@ -103,7 +104,7 @@ const createStatisticsItem = (result) => {
  * @param {*object} probability {totalDoors:, opened:, sticked:, switched:} 
  * @returns {HTMLLIElement}
  */
-const createProbabilityItem = (probability) => {
+export const createProbabilityItem = (probability) => {
   const li = document.createElement('li');
   li.classList.add('probability-item');
   li.setAttribute('data-stick-probability', probability.sticked);
