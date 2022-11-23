@@ -1,7 +1,8 @@
 # monty-hall
 The Monty Hall problem is a famous, seemingly paradoxical problem in conditional probability. Marilyn vos Savant's solution 'switch' is the best option in a column in Parade Magazine was initially rejected in the popular media of the day.<br>
 This program was built to demonstrate probability calculations and statistics standard assumptions calculation for stick or switch better option to prove that Vos Savant solution is correct. The program proves correctness through various examples of probabilistic calculations and game simulations.<br>
-It is a simple project developed using JavaScript, CSS, and HTML. 
+It is a simple project developed using JavaScript, CSS, and HTML. <br>
+See in action https://nataliarusu.github.io/monty-hall/
    <hr>
 
 ### The rules of the game
